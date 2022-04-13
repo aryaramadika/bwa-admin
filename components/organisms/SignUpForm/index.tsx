@@ -21,6 +21,11 @@ export default function SignUpForm() {
             <input type="password" className="form-control rounded-pill text-lg" id="password" name="password"
                 aria-describedby="password" placeholder="Your password"/>
         </div>
+        <div className="pt-50">
+            <label for="name" className="form-label text-lg fw-medium color-palette-1 mb-10">Phone Number</label>
+            <input type="text" className="form-control rounded-pill text-lg" id="name" name="name"
+                aria-describedby="name" placeholder="Enter your Phone Number"/>
+        </div>
         <div className="button-group d-flex flex-column mx-auto pt-50">
             <a className="btn btn-sign-up fw-medium text-lg text-white rounded-pill mb-16"
                 href="sign-up-photo" role="button">Continue</a>

@@ -19,7 +19,7 @@ export default function Navbar() {
                         <Menu title ="About us" href="#about"/>
                         <Menu title ="Reservation"/>
                         <Menu title ="Staff" href="#fisioterapi"/>
-                        <Auth isLogin/>
+                        <Auth />
                     </ul>
                 </div>
             </div>
