@@ -22,6 +22,10 @@
     "rules": {
         "react/jsx-filename-extension":[1,{"extentions":[".js",".jsx",".ts",".tsx"]}],
         "react/react-in-jsx-scope":"off",
-        "jsx-ally/anchor-is-valid":"off"
+        "jsx-ally/anchor-is-valid":"off",
+        "no-underscore-dangle": "off",
+        "react/jsx-props-no-spreading": "off"
+
+
     }
 }

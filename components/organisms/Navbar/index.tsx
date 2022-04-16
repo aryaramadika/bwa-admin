@@ -15,7 +15,7 @@ export default function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto text-lg gap-lg-0 gap-2">
                         <Menu title ="Home" active href="/"/>
-                        <Menu title ="Services"href="/games"/>
+                        <Menu title ="Services"href="/priceDetailTreatment"/>
                         <Menu title ="About us" href="#about"/>
                         <Menu title ="Reservation"/>
                         <Menu title ="Staff" href="#fisioterapi"/>
