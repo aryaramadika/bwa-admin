@@ -1,3 +1,5 @@
+import NumberFormat from "react-number-format";
+
 export interface PriceDetaiProps{
     treatmenType: string;
     price:number;
@@ -38,6 +40,7 @@ export default function PriceDetail(props:PriceDetaiProps) {
         
         // <div className="pt-md-50 pb-md-50 pt-30 pb-20">
         // <div className="row justify-content-between">
+      
             <label className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
                >
                 <input className="d-none" type="radio" id="topup1" name="topup" value="topup1"/>
@@ -53,9 +56,18 @@ export default function PriceDetail(props:PriceDetaiProps) {
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <p className="text-lg color-palette-1 m-0">{price}</p>
+                    <p className="text-lg color-palette-1 m-0">
+                        <NumberFormat 
+                        value={price} 
+                        prefix="Rp " 
+                        displayType="text" 
+                        thousandSeparator="."
+                        decimalSeparator=","
+                        />                    
+                    </p>
                 </div>
             </label>
+            
           
                 
             // <div className="col-lg-4 col-sm-6">

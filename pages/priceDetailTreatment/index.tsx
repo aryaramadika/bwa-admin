@@ -29,7 +29,7 @@ export default function priceDetail() {
             <div className="detail-header pb-50">
                 <h2 className="text-4xl fw-bold color-palette-1 text-start mb-10">Price Detail</h2>
             </div>
-            <div className="row">
+            <div className="row" >
             {priceDetail.map((price:PriceDetailTypes) =>{
                 return (
                 <PriceDetail 

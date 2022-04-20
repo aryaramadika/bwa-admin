@@ -17,7 +17,7 @@ export default function Navbar() {
                         <Menu title ="Home" active href="/"/>
                         <Menu title ="Services"href="/priceDetailTreatment"/>
                         <Menu title ="About us" href="#about"/>
-                        <Menu title ="Reservation"/>
+                        <Menu title ="Reservation" href="/reservationPage"/>
                         <Menu title ="Staff" href="#fisioterapi"/>
                         <Auth />
                     </ul>
