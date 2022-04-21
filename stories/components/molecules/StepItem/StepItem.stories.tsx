@@ -1,5 +1,5 @@
 import { Meta} from "@storybook/react";
-import StepItem, {StepItemProps} from "../../../../components/molecules/StepItem";
+import StepItem, {StepItemProps} from "../../../../components/molecules/PaymentDetail";
 
 export default {
     title: 'components/molecules/GameItem',
