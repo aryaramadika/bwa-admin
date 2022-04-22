@@ -30,3 +30,12 @@ export async function getPriceDetail() {
     
     return  axiosResponse.data;}
 
+    export async function getPaymentDetail() {
+        const ENDPOINT = `patients/paymentMethod`;
+    
+        const response = await axios.get(`${ROOT_API}/${API_VERSION}/${ENDPOINT}`);
+        const axiosResponse = response.data;
+        
+        return  axiosResponse.data;
+    }   
+

@@ -1,9 +1,23 @@
+import { useCallback, useEffect, useState } from "react";
+import { getPaymentDetail } from "../../../services/patient";
+import PayementMethod from "./paymentMethod";
 
 
-export default function TopUpForm() {
+export default function TopUpForm(props) {
+    const[payment,setPayment]=useState([])
+    const getPriceDetailList = useCallback(async ()=>{
+        const data = await getPaymentDetail();
+        setPayment(data)
+        console.log(data)
+    }, [getPaymentDetail])
+
+    useEffect(()=>{
+        getPriceDetailList()
+    })    
+    
     return (
         <form action="./checkout.html" method="POST">
-        <div className="pt-md-50 pt-30">
+        {/* <div className="pt-md-50 pt-30">
             <div className="">
                 <label for="ID" className="form-label text-lg fw-medium color-palette-1 mb-10">Verify
                     ID</label>
@@ -107,46 +121,25 @@ export default function TopUpForm() {
                 <div className="col-lg-4 col-sm-6">
                 </div>
             </div>
-        </div>
+        </div> */}
         <div className="pb-md-50 pb-20">
             <p className="text-lg fw-medium color-palette-1 mb-md-10 mb-0">Payment Method</p>
             <fieldset id="paymentMethod">
                 <div className="row justify-content-between">
-                    <label className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
-                        for="transfer">
-                        <input className="d-none" type="radio" id="transfer" name="paymentMethod"
-                            value="transfer"/>
-                        <div className="detail-card">
-                            <div className="d-flex justify-content-between">
-                                <p className="text-3xl color-palette-1 fw-medium m-0">Transfer</p>
-                                <svg id="icon-check" width="20" height="20" viewBox="0 0 20 20"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="10" cy="10" r="10" fill="#CDF1FF" />
-                                    <path d="M5.83301 10L8.46459 12.5L14.1663 7.5" stroke="#00BAFF"
-                                        stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <p className="text-lg color-palette-1 m-0">Worldwide Available</p>
-                        </div>
-                    </label>
-                    <label className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
-                        for="visa">
-                        <input className="d-none" type="radio" id="visa" name="paymentMethod" value="visa"/>
-                        <div className="detail-card">
-                            <div className="d-flex justify-content-between">
-                                <p className="text-3xl color-palette-1 fw-medium m-0">VISA</p>
-                                <svg id="icon-check" width="20" height="20" viewBox="0 0 20 20"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="10" cy="10" r="10" fill="#CDF1FF" />
-                                    <path d="M5.83301 10L8.46459 12.5L14.1663 7.5" stroke="#00BAFF"
-                                        stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <p className="text-lg color-palette-1 m-0">Credit Card</p>
-                        </div>
-                    </label>
+                    {payment.map(payment =>{
+                        payment.banks.map(banks=>{
+                            return(
+                                <PayementMethod 
+                                bankId= {banks._id} 
+                                type={payment.type} 
+                                bankName={banks.bankName} />
+                            )
+                        })
+                       
+                    })}
+                   
+                   {/* <PayementMethod bankId= "1235" type="ON THE SPOT" bankName=""  /> */}
+
                     <div className="col-lg-4 col-sm-6">
                     </div>
                 </div>
@@ -160,10 +153,10 @@ export default function TopUpForm() {
                 name="bankAccount" aria-describedby="bankAccount"
                 placeholder="Enter your Bank Account Name"/>
         </div>
-        <div className="d-sm-block d-flex flex-column w-100">
+        {/* <div className="d-sm-block d-flex flex-column w-100">
             <a href="./checkout" type="submit"
                 className="btn btn-submit rounded-pill fw-medium text-white border-0 text-lg">Continue</a>
-        </div>
+        </div> */}
     </form>
     )
 }

@@ -1,4 +1,4 @@
-import StepItem from "../../molecules/PaymentDetail"
+import ReserveStep from "../../molecules/ReservationStep"
 
 export default function TransactionStep() {
     return (
@@ -7,9 +7,9 @@ export default function TransactionStep() {
         <h2 className="text-4xl fw-bold color-palette-1 text-center mb-30">How To Do <br/> Online Reservation
         </h2>
         <div className="row gap-lg-0 gap-4" data-aos="fade-up">
-            <StepItem icon="step1" title="1. Start" desc1="Pilih salah satu game" desc2="yang ingin kamu top up"/>
-            <StepItem icon="step2" title="2. 2. Fill Up " desc1="Top up sesuai dengan" desc2="nominal yang sudah tersedia"/>
-            <StepItem icon="step3" title="3. Be a Winner" desc1="Siap digunakan untuk" desc2="improve permainan kamu"/>
+            <ReserveStep icon="step1" title="1. Start" desc1="Registrasi akun anda" desc2="jika belum memiliki akun"/>
+            <ReserveStep icon="step2" title="2. Login " desc1="Login dengan akun " desc2="yang telah teregistrasi"/>
+            <ReserveStep icon="step3" title="3. Reservasi" desc1="Masuk kehalaman reservasi" desc2="untuk melakukan reservasi"/>
         </div>
     </div>
 </section>

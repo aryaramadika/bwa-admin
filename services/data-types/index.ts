@@ -11,6 +11,20 @@ export interface PriceDetailTypes {
     price: number;
 
 }
+export interface BanksTypes {
+    _id: string;
+    name: string;
+    bankName: string;
+    noRekening: string;
+}
+export interface PaymentDetailTypes {
+    bankId: string;
+    type: string;
+    bankName: string;
+    banks: BanksTypes[];
+
+
+}
 export interface LoginTypes {
     email: string;
     password: string;
