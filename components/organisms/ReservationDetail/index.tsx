@@ -6,8 +6,8 @@ import priceDetail from "../../../pages/priceDetailTreatment";
 
 export default function ReservationDetail() {
     const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [lementation, setLementation] = useState('');
     const [treatment, setTreatment] = useState('');
 
     const router = useRouter();
@@ -54,8 +54,8 @@ export default function ReservationDetail() {
             className="form-control rounded-pill text-lg" 
             aria-describedby="email" 
             placeholder="Enter your phone number"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            value={phoneNumber}
+            onChange={(event) => setPhoneNumber(event.target.value)}
             style={{
                 width:"250%",
                 maxWidth:"1000%"
@@ -70,8 +70,8 @@ export default function ReservationDetail() {
             className="form-control rounded-pill text-lg" 
             aria-describedby="password" 
             placeholder="Presenting complaint"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            value={lementation}
+            onChange={(event) => setLementation(event.target.value)}
             style={{
                 width:"250%",
                 maxWidth:"1000%"

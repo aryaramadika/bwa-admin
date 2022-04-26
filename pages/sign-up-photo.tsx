@@ -2,7 +2,6 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { setSignUp } from "../services/auth";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import router, { useRouter } from "next/router";
 export default function SignUpPhoto() {
     const[image, setImage] = useState('');
@@ -104,7 +103,6 @@ export default function SignUpPhoto() {
                     </div>
                 </div>
             </form>
-        <ToastContainer />
         </div>
     </section>
 

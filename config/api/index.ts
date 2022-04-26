@@ -1,10 +1,32 @@
 import axios, { AxiosRequestConfig } from 'axios'
+import Cookies from "js-cookie"
+import jwt_decode from "jwt-decode"
+import { JWTPayloadTypes, UserTypes } from '../../../services/data-types';
 
-export default async function callAPI({url, method, data}: AxiosRequestConfig) {
+
+interface CallApiProps extends AxiosRequestConfig{
+    token?: boolean
+}
+
+
+export default async function callAPI({url, method, data, token}: CallApiProps) {
+    let headers ={}
+    if(token){
+        const tokenCookies = Cookies.get('token')
+        if(tokenCookies){
+            const JwtToken = atob(tokenCookies)
+            headers ={
+                Authorization:`Bearer ${JwtToken}`
+            }
+          
+        }
+    }
+    
     const response = await axios({
         url,
         method,
-        data
+        data,
+        headers
     }).catch((err) => err.response);
     // console.log('api response : ', response)
     

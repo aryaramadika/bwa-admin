@@ -40,4 +40,16 @@ export interface JWTPayloadTypes {
     patient: UserTypes;
     iat: number;
 }
+export interface BookTypes {
+    treatment : string,
+    payment : string,
+    bank : string,
+    accountUser : string,
+    name:  string,
+    // address :string,
+    phoneNumber: string,
+    // gender: string,
+    // age: number,
+    lementation:string
+}
 

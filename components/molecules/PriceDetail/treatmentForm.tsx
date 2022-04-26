@@ -8,7 +8,7 @@ export default function treatmentForm(props:PriceDetaiProps){
     const{treatmenType,price,_id}= props;
 
 
-    console.log(treatmenType,price,_id)
+    // console.log(treatmenType,price,_id)
     return(
         
             <label className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"

@@ -9,7 +9,7 @@ export default function Checkout() {
         <div className="container-fluid">
             <div className="logo text-md-center text-start pb-50">
                 <a className="" href="/#">
-                 <Image src="/icon/logo.svg" width={60} height ={60} alt="logo"/>
+                 <Image src="/icon/TBS5LOGO.PNG" width={240} height ={240} alt="logo"/>
                         <g mask="url(#mask0)">
                             <circle cx="30" cy="30" r="30" fill="#00BAFF" />
                             <path
@@ -22,14 +22,26 @@ export default function Checkout() {
                     
                 </a>
             </div>
+            <hr 
+            style={
+            {
+                border:'1px solid black'
+            }}/>
             <div className="title-text pt-md-50 pt-0">
-                <h2 className="text-4xl fw-bold color-palette-1 mb-10">Checkout</h2>
-                <p className="text-lg color-palette-1 mb-0">Waktunya meningkatkan cara bermain</p>
+                
+                <h2 className="text-4xl fw-bold color-palette-1 mb-10" align =''>Detail Reservasi</h2>
             </div>
+            
             <CheckoutItem />
-            <hr/>
+            <hr 
+            style={
+            {
+                border:'1px solid black'
+            }}/>            
             <CheckoutDetail />
+           
             <CheckoutConfirmation />
+            
         </div>
     </section>
         </>
