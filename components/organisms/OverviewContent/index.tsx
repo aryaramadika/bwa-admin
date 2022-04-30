@@ -63,7 +63,7 @@ export default function OverviewContent() {
                                 {data.map((historyBooking)=>(
                                     <TableRow 
                                     key={historyBooking._id}
-                                    title={historyBooking.treatment.treatmentType} 
+                                    title={historyBooking.historyTreatment.treatmentType} 
                                     price={historyBooking.total} 
                                     status={historyBooking.status}/>
                                 ))}

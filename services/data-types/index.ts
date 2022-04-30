@@ -52,4 +52,27 @@ export interface BookTypes {
     // age: number,
     lementation:string
 }
+export interface HistoryTreatmentTypes{
+    name: string,
+    lementation:string,
+    phoneNumber:string,
+    price:number,
+    treatmentType:string
 
+}
+export interface HistoryPaymentTypes {
+    bankName: string;
+    name: string;
+    noRekening: string;
+    type: string;
+}
+export interface HistoryTransactionTypes {
+    _id: string;
+    historyTreatment: HistoryTreatmentTypes;
+    value: number;
+    status: string;
+    accountUser: string;
+    tax: number;
+    name: string;
+    historyPayment: HistoryPaymentTypes;
+}
