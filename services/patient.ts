@@ -54,6 +54,19 @@ export async function setBooking(data: BookTypes) {
     
     // return  axiosResponse.data;
 }   
+export async function getPatientOverview() {
+    const url = `${ROOT_API}/${API_VERSION}/patients/dashboard`;
+    return callAPI({
+        url,
+        method: 'GET',
+        token: true
+    })
+
+    // const response = await axios.get(`${ROOT_API}/${API_VERSION}/${ENDPOINT}`);
+    // const axiosResponse = response.data;
+    
+    // return  axiosResponse.data;
+}   
  
     
 

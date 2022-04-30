@@ -1,4 +1,5 @@
-
+import Link from 'next/link';
+import { useEffect } from 'react';
 export default function CompleteCheckout() {
     return (
         <>
@@ -122,18 +123,25 @@ export default function CompleteCheckout() {
                 </svg>
             </div>
             <div className="pt-70 pb-50">
-                <h2 className="text-4xl fw-bold text-center color-palette-1 mb-10">Checkout Completed</h2>
+                <h2 className="text-4xl fw-bold text-center color-palette-1 mb-10">Booking Completed</h2>
                 <p className="text-lg text-center color-palette-1 m-0">Kami akan periksa pembayaran Anda<br
                         className="d-sm-block d-none"/> dan menghubungi via
                     WhatsApp</p>
             </div>
             <div className="button-group d-flex flex-column mx-auto">
+                <Link href='/member'>
                 <a className="btn btn-dashboard fw-medium text-lg text-white rounded-pill mb-16"
-                    href="../member/overview.html" role="button">My
+                    
+                    role="button">My
                     Dashboard</a>
-                <a className="btn btn-whatsapp fw-medium text-lg color-palette-1 rounded-pill" href="/#"
+                
+
+                </Link>
+                <a className="btn btn-whatsapp fw-medium text-lg color-palette-1 rounded-pill" 
+                href="https://wa.me/6282144365203?text=Saya%20sudah%20dmelakukan%20pembayaran%20via%20bank%20transfer"
                     role="button">WhatsApp
                     ke Admin</a>
+                
             </div>
         </div>
     </section>

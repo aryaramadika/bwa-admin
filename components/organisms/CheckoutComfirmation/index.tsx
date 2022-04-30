@@ -14,7 +14,7 @@ export default function CheckoutConfirmation() {
         if (!checkbox) {
             toast.error('Make sure you already pay the reservation');
             // [CODE UPDATE] menggagalkan checkout jika checkbox false
-            // return;
+            return;
         }
         const data ={
             treatment : dataReservation.treatmentPrice._id,

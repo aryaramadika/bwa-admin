@@ -38,10 +38,11 @@ export default async function callAPI({url, method, data, token}: CallApiProps) 
         }
         return res;
     };
+    // console.log(response)
     const res = {
         error: false,
-        message: 'Login Success',
-        data: response.data.data
+        message: 'Success',
+        data: response.data.count ? response.data : response.data.data
     }
     return res;
 }

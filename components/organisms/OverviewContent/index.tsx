@@ -1,26 +1,50 @@
-import Category from "./Category"
+import { useEffect, useState } from "react"
+import { getPatientOverview } from "../../../services/patient"
+import Treatment from "./treatementOverview"
 import TableRow from "./TableRow"
+import { ToastContainer, toast } from 'react-toastify';
+import Cookies from 'js-cookie';
+import { useRouter } from "next/router";
+
+
+
 export default function OverviewContent() {
+    const router = useRouter();
+    const [count, setCount] = useState([]);
+    const [data, setData] = useState([]);
+    useEffect(async () =>{
+        const response = await getPatientOverview()
+        if (response.error) {
+          toast.error(response.message);
+        }else{
+        //   const { token } = response.data;
+        //   // console.log('TOKEN : ',token)
+        //   // const user = jwt_decode(token)
+        //   // console.log('USER : ' ,user)
+        //   const tokenBase64 = btoa(token);
+        //   console.log('TOKEN BASE 64 : ' ,tokenBase64)
+        //   Cookies.set('token', tokenBase64, { expires: 1 });
+        //   // console.log(response)
+        //   router.push('/');
+        console.log('DATA:',response.data)
+        setCount(response.data.count);
+        setData(response.data.data);        }
+    },[])
     return (
         <main className="main-wrapper">
             <div className="ps-lg-0">
                 <h2 className="text-4xl fw-bold color-palette-1 mb-30">Overview</h2>
                 <div className="top-up-categories mb-30">
-                    <p className="text-lg fw-medium color-palette-1 mb-14">Top Up Categories</p>
+                    <p className="text-lg fw-medium color-palette-1 mb-14">Total Booking Spent</p>
                     <div className="main-content">
                         <div className="row">
-                            <Category nominal={18500000} icon ='ic-desktop' >
-                            Game
-                            <br/>
-                            Desktop </Category>
-                            <Category nominal={8455000} icon ='ic-mobile' >
-                            Game
-                            <br/>
-                            Mobile </Category>
-                            <Category nominal={18500000} icon ='ic-desktop' >
-                            Other
-                            <br/>
-                            Categories </Category>
+                            {count.map((spend)=>(
+                                <Treatment key={spend._id} spending={spend.total} icon ='ic-desktop' >
+                                {spend.treatmentType}
+                                </Treatment>
+
+                            ))}
+                          
                         </div>
                     </div>
                 </div>
@@ -30,18 +54,20 @@ export default function OverviewContent() {
                         <table className="table table-borderless">
                             <thead>
                                 <tr className="color-palette-1">
-                                    <th className="text-start" scope="col">Game</th>
-                                    <th scope="col">Item</th>
+                                    <th className="text-start" scope="col">Treatment</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <TableRow image="overview-1"title="Mobile Legend" category="Mobile" item={200} price={290000} status="Pending"/>
-                            <TableRow image="overview-2"title="Call of Duty" category="Desktop" item={550} price={740000} status="Success"/>
-                            <TableRow image="overview-3"title="Clash of Clans" category="Mobile" item={100} price={120000} status="Failed"/>
-                            <TableRow image="overview-4"title="Valorant" category="Mobile" item={225} price={200000} status="Pending"/>
-
+                                {data.map((historyBooking)=>(
+                                    <TableRow 
+                                    key={historyBooking._id}
+                                    title={historyBooking.treatment.treatmentType} 
+                                    price={historyBooking.total} 
+                                    status={historyBooking.status}/>
+                                ))}
+                           
                             </tbody>
                         </table>
                     </div>

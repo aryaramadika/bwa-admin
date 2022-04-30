@@ -14,13 +14,13 @@ export default function SideBar(props:SideBarProps) {
                 <div className="menus">
                     <MenuItem title="Overview" icon="ic-menu-overview" active={activeMenu === 'overview'} /> 
                     <MenuItem title="Transactions" icon="ic-menu-transaction"active={activeMenu === 'transactions'} /> 
-                    <MenuItem title="Messages" icon="ic-menu-messages" /> 
-                    <MenuItem title="Card" icon="ic-menu-card"/> 
-                    <MenuItem title="Rewards" icon="ic-menu-rewards" /> 
+                    <MenuItem title="Recommendation" icon="ic-menu-messages" /> 
+                    <MenuItem title="Treatment History" icon="ic-menu-card"/> 
+                    <MenuItem title="Booking" icon="ic-menu-rewards" /> 
                     <MenuItem title="Setting" icon="ic-menu-settings" active={activeMenu === 'settings'} /> 
                     <MenuItem title="Log Out" icon="ic-menu-logout"/> 
                 </div>
-            <Footer />
+            {/* <Footer /> */}
             </div>
         </section>
     )
