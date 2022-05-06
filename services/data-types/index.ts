@@ -69,10 +69,15 @@ export interface HistoryPaymentTypes {
 export interface HistoryTransactionTypes {
     _id: string;
     historyTreatment: HistoryTreatmentTypes;
-    value: number;
+    total: number;
     status: string;
     accountUser: string;
-    tax: number;
+    adminFee: number;
     name: string;
     historyPayment: HistoryPaymentTypes;
+}
+export interface TreatmentSpendTypes {
+    _id: string;
+    total: number;
+    treatmentType: string;
 }

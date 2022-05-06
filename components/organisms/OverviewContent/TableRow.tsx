@@ -1,24 +1,21 @@
 
-import Image from "next/image"
-import Category from "./treatementOverview"
+
 import NumberFormat from "react-number-format"
 
 import cx from 'classnames'
 interface TableRowProps{
     title : string;
     treatmenType: string;
-    item : number;
     price:number;
-    status:'Pending'|'Success'|'Failed';
-    image:string;
+    status:string;
 }
 export default function TableRow(props:TableRowProps) {
-    const{title,treatmenType,item,price,status,image}=props;
+    const{title,treatmenType,price,status}=props;
     const statusClass=cx({
         'float-start icon-status':true,
-        'pending':status==='Pending',
-        'success':status==='Success',
-        'failed':status==='Failed'
+        'pending':status==='pending',
+        'success':status==='success',
+        'failed':status==='failed'
 
     })
     return (

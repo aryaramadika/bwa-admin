@@ -1,15 +1,56 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import TableRow from './TableRow'
 import ButtonTab from './ButtonTab'
+import { getMemberTransactions } from '../../../services/member'
+import { ToastContainer, toast } from 'react-toastify';
+import NumberFormat from 'react-number-format';
+
 
 export default function TransactionContent () {
+    const [data, setData] = useState([]);
+    const [count, setCount] = useState([]);
+    const [total,setTotal] = useState(0);
+    const [transactions, setTransactions] = useState([]);
+
+    const getMemberTransactionAPI = useCallback(async()=>{
+        
+        const response = await getMemberTransactions()
+        if (response.error) {
+            toast.error(response.message);
+          }else{
+          //   const { token } = response.data;
+          //   // console.log('TOKEN : ',token)
+          //   // const user = jwt_decode(token)
+          //   // console.log('USER : ' ,user)
+          //   const tokenBase64 = btoa(token);
+          //   console.log('TOKEN BASE 64 : ' ,tokenBase64)
+          //   Cookies.set('token', tokenBase64, { expires: 1 });
+          //   // console.log(response)
+          //   router.push('/');
+          console.log('DATA history transaction:',response)
+          setTotal(response.data.totalTransaction)
+          setTransactions(response.data.data)
+        //   setCount(response.data.count);
+        //   setData(response.data.data);    
+        }
+
+    },[])
+    useEffect(()=>{
+        getMemberTransactionAPI()
+    },[])
     return (
         <main className="main-wrapper">
             <div className="ps-lg-0">
                 <h2 className="text-4xl fw-bold color-palette-1 mb-30">My Transactions</h2>
                 <div className="mb-30">
                     <p className="text-lg color-palette-2 mb-12">You’ve spent</p>
-                    <h3 className="text-5xl fw-medium color-palette-1">Rp 4.518.000.500</h3>
+                    <h3 className="text-5xl fw-medium color-palette-1"><NumberFormat 
+                        value={total}
+                        prefix="Rp " 
+                        displayType="text" 
+                        thousandSeparator="."
+                        decimalSeparator=","
+                        /></h3>
                 </div>
                 <div className="row mt-30 mb-20">
                     <div className="col-lg-12 col-12 main-content">
@@ -34,15 +75,15 @@ export default function TransactionContent () {
                                 </tr>
                             </thead>
                             <tbody id="list_status_item">
-                            <TableRow image='overview-1' title ='Mobile Legends' category='Desktop' item={200} status="Pending" price={120000}/>
-                            
-                            <TableRow image='overview-2' title ='Call of
-                                                Duty:Modern' category='Desktop' item={550} status="Success" price={740000}/>
-                             <TableRow image='overview-3' title ='Clash of
-                                                Clans' category='Mobile' item={200} status="Failed" price={200000}/>
-                             <TableRow image='overview-4' title ='Valorant' category='Desktop' item={225} status="Pending" price={150000}/>                    
-
-
+                             {transactions.map( transaction => {
+                                 return(
+                                    <TableRow 
+                                    key={transaction._id}
+                                    title={transaction.historyTreatment.treatmentType} 
+                                    price={transaction.total} 
+                                    status={transaction.status}/>
+                                 )
+                             })}   
                             </tbody>
                         </table>
                     </div>

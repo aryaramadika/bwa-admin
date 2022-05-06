@@ -67,6 +67,20 @@ export async function getPatientOverview() {
     
     // return  axiosResponse.data;
 }   
- 
+export async function getRecommendHistory() {
+    // const ENDPOINT = `patients/checkupHistory`;
+
+    // const response = await axios.get(`${ROOT_API}/${API_VERSION}/${ENDPOINT}`);
+    // const axiosResponse = response.data;
+    
+    // return  axiosResponse.data;}
+
+    const url = `${ROOT_API}/${API_VERSION}/patients/recommendHistory`;
+    return callAPI({
+        url,
+        method: 'GET',
+        token: true
+    })
+}
     
 

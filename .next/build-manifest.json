@@ -24,15 +24,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/checkout": [
+    "/member/recommendationHistory": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/checkout.js"
+      "static/chunks/pages/member/recommendationHistory.js"
     ],
-    "/member": [
+    "/member/transactions": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/member.js"
+      "static/chunks/pages/member/transactions.js"
     ]
   },
   "ampFirstPages": []

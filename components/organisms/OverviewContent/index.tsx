@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { getPatientOverview } from "../../../services/patient"
 import Treatment from "./treatementOverview"
 import TableRow from "./TableRow"
 import { ToastContainer, toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import { useRouter } from "next/router";
+import { HistoryTransactionTypes, HistoryTreatmentTypes, TreatmentSpendTypes } from "../../../services/data-types";
 
 
 
@@ -12,7 +13,7 @@ export default function OverviewContent() {
     const router = useRouter();
     const [count, setCount] = useState([]);
     const [data, setData] = useState([]);
-    useEffect(async () =>{
+    const getPatientOverviewAPI = useCallback(async () =>{
         const response = await getPatientOverview()
         if (response.error) {
           toast.error(response.message);
@@ -28,7 +29,12 @@ export default function OverviewContent() {
         //   router.push('/');
         console.log('DATA:',response.data)
         setCount(response.data.count);
-        setData(response.data.data);        }
+        setData(response.data.data);       
+     }
+
+    },[])
+    useEffect(() =>{
+        getPatientOverviewAPI()
     },[])
     return (
         <main className="main-wrapper">
@@ -38,7 +44,7 @@ export default function OverviewContent() {
                     <p className="text-lg fw-medium color-palette-1 mb-14">Total Booking Spent</p>
                     <div className="main-content">
                         <div className="row">
-                            {count.map((spend)=>(
+                            {count.map((spend:TreatmentSpendTypes)=>(
                                 <Treatment key={spend._id} spending={spend.total} icon ='ic-desktop' >
                                 {spend.treatmentType}
                                 </Treatment>
@@ -60,7 +66,7 @@ export default function OverviewContent() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map((historyBooking)=>(
+                                {data.map((historyBooking: HistoryTransactionTypes)=>(
                                     <TableRow 
                                     key={historyBooking._id}
                                     title={historyBooking.historyTreatment.treatmentType} 
